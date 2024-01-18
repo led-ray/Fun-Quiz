@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ふぁん×くいず！？</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      #video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      #question-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 40px auto;
+        max-width: 500px;
+        height: 250px;
+        background-color: rgba(133, 238, 241, 0.4);
+      }
+
+      #question {
+        white-space: pre-line;
+      }
+
+      #answer-container {
+        max-width: 500px;
+        padding: 150px 0 0 0;
+        margin: 40px auto;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      #image-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      #image-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .animate-in {
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="bgm" loop>
+      <source src="BGM2.mp3" type="audio/mp3" />
+      Your browser does not support the audio tag.
+    </audio>
+
+    <audio id="correctSound" src="correctSE.mp3"></audio>
+    <audio id="incorrectSound" src="incorrectSE.mp3"></audio>
+
+    <div id="question-container">
+      <h1 id="question">問題文表示</h1>
+    </div>
+
+    <div id="answer-container">
+      <input
+        type="text"
+        id="answer-input"
+        placeholder="ここに答えを入力してください"
+      />
+    </div>
+
+    <div id="video-container">
+      <img src="castle.jpg" alt="城のドット絵" width="768px" height="576px" />
+    </div>
+
+    <button id="playButton">♪</button>
+    <button id="restart">Top</button>
+
+    <div id="result"></div>
+
+    <script>
+      const questions = [
+        {
+          question: "文字列の長さをバイト数で取得する関数は？",
+          answer: "strlen",
+          explanation:
+            "strlen 関数は引数に指定した文字列の長さをバイト数で取得します。",
+        },
+        {
+          question: "文字列の長さを文字数で取得する関数は？",
+          answer: "mb_strlen",
+          explanation: "mb_strlen 関数は文字列の長さを文字数で取得します。",
+        },
+        {
+          question: `   $str = "123a5";\n$replace = [    ]("a", "4", $str);\necho $replace;\n\n出力結果 12345`,
+          answer: "str_replace",
+          explanation:
+            "str_replaceは文字列にの中の特定の文字列を指定し、置き換えることができます。 また、置き換え後の文字列に「」を指定することで文字列を削除することができます。",
+        },
+      ];
+
+      var restart = document.getElementById("restart");
+      var audio = document.getElementById("bgm");
+      var playButton = document.getElementById("playButton");
+      var correctSound = document.getElementById("correctSound");
+      var incorrectSound = document.getElementById("incorrectSound");
+      let currentQuestionIndex = 0;
+      let score = 0;
+      let resolveButtonClick = null;
+      const num = 1;
+
+      const questionElement = document.getElementById("question");
+      const answerInput = document.getElementById("answer-input");
+      const resultElement = document.getElementById("result");
+
+      function showQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+        answerInput.value = ""; // 新しい問題に備えて入力フィールドをクリア
+      }
+
+      function checkAnswer() {
+        const userAnswer = answerInput.value.trim().toLowerCase();
+        const currentQuestion = questions[currentQuestionIndex];
+
+        //問題を全て答えた場合
+        if (currentQuestionIndex + num === questions.length) {
+          if (userAnswer === currentQuestion.answer.toLowerCase()) {
+            score++;
+            showAnswerCorrect();
+          } else {
+            showAnswerWrong();
+          }
+
+          showResult();
+
+          return;
+        }
+
+        //正誤判定
+        if (userAnswer === currentQuestion.answer.toLowerCase()) {
+          score++;
+          showAnswerCorrect();
+        } else {
+          showAnswerWrong();
+        }
+
+        currentQuestionIndex++;
+
+        showQuestion();
+      }
+
+      function showResult() {
+        questionElement.textContent = `クイズ終了\nあなたのスコアは ${score} / ${questions.length} です！`;
+        answerInput.style.display = "none";
+        resultElement.textContent = ``;
+      }
+
+      //正解
+      function showAnswerCorrect() {
+        const currentQuestion = questions[currentQuestionIndex];
+
+        // 解説の表示部分を残す
+        const explanationElement = document.createElement("div");
+        explanationElement.textContent = currentQuestion.explanation;
+
+        // 新しい要素を作成してアニメーションのクラスを追加
+        const correctElement = document.createElement("div");
+        correctElement.textContent = "正解！";
+        correctElement.classList.add("animate-in");
+
+        playCorrectSound();
+        // 結果エレメントに追加
+        resultElement.innerHTML = "";
+        resultElement.appendChild(correctElement);
+        resultElement.appendChild(explanationElement);
+      }
+
+      //不正解
+      async function showAnswerWrong() {
+        const currentQuestion = questions[currentQuestionIndex];
+
+        // 解説の表示部分を残す
+        const explanationElement = document.createElement("div");
+        explanationElement.textContent = currentQuestion.explanation;
+
+        // 新しい要素を作成してアニメーションのクラスを追加
+        const correctElement = document.createElement("div");
+        correctElement.textContent = "不正解…";
+        correctElement.classList.add("animate-in");
+
+        playIncorrectSound();
+        // 結果エレメントに追加
+        resultElement.innerHTML = "";
+        resultElement.appendChild(correctElement);
+        resultElement.appendChild(explanationElement);
+      }
+
+      //Enterキーを押した際のイベント
+      answerInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // デフォルトのEnterキー動作を防ぐ
+          checkAnswer();
+        }
+      });
+
+      //BGM
+      playButton.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playButton.textContent = "♪×";
+        } else {
+          audio.pause();
+          audio.currentTime = 0; // 再生位置を初期化
+          playButton.textContent = "♪ ";
+        }
+      });
+
+      //SE
+      function playCorrectSound() {
+        correctSound.play();
+      }
+
+      function playIncorrectSound() {
+        incorrectSound.play();
+      }
+
+      //topに戻る
+      restart.addEventListener("click", function () {
+        answerInput.style.display = "";
+        resultElement.innerHTML = "";
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+      });
+
+      // 最初の問題を表示
+      showQuestion();
+    </script>
+  </body>
+</html>
