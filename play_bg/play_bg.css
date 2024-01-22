@@ -1,0 +1,11 @@
+.container {
+  width: 1280px;
+  height: 768px;
+  margin: 5% auto;
+  overflow: hidden;
+}
+
+.bg-img img{
+  width: 1280px;
+  height: 768px;
+}
