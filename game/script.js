@@ -21,11 +21,19 @@ const questions = [
   },
 ];
 
+const backGroundImage = [
+  "img/plain.jpg",
+  "img/castle.jpg",
+  "img/plain.jpg",
+  "img/castle.jpg",
+];
+
 const timeLimit = 10;
 let timer;
 let currentQuestionIndex = 0;
 let score = 0;
 let resolveButtonClick = null;
+var correct = ""; //値渡しの正誤判定
 const num = 1;
 
 const questionElement = document.getElementById("question");
@@ -33,10 +41,24 @@ const answerInput = document.getElementById("answer-input");
 const resultElement = document.getElementById("answer-container");
 const q_num = document.getElementById("q-num");
 
-function showQuestion() {
-  startTimer();
-  const currentQuestion = questions[currentQuestionIndex];
+const background = document.getElementById("image-container");
+const imageElement = background.querySelector("#bg");
 
+const scaleSpeed = 0.0009;
+let backgroundScale = 1;
+let animationID;
+
+function showQuestion() {
+  if (animationID) {
+    cancelAnimationFrame(animationID);
+    animationID = null;
+  }
+
+  startTimer();
+  backgroundScale = 1;
+  animateBackground();
+  const currentQuestion = questions[currentQuestionIndex];
+  backGroundChange(backGroundImage[currentQuestionIndex]);
   // 一時的な要素を作成し内容を設定
   const tempElement = document.createElement("div");
   tempElement.textContent = currentQuestion.question;
@@ -48,10 +70,10 @@ function showQuestion() {
   for (const node of tempElement.childNodes) {
     questionElement.appendChild(node.cloneNode(true));
   }
-
+  //　全問解答したあと。(question配列の末尾をaタグで表示中)
   if (currentQuestionIndex === questions.length - 1) {
     const aTag = document.createElement("a");
-    aTag.href = `sample2.html?score=${score}&correct=${5}`;
+    aTag.href = `sample2.html?score=${score}&correct=${correct}`;
     aTag.textContent = questionElement.textContent;
     aTag.id = "nextPage";
 
@@ -62,6 +84,7 @@ function showQuestion() {
     clearInterval(timer);
     var BombElement = document.getElementById("bomb");
     BombElement.classList = "none";
+    cancelAnimationFrame(animationID);
   } else {
     questionElement.textContent = currentQuestion.question;
   }
@@ -78,7 +101,7 @@ function showQuestion() {
 function checkAnswer() {
   const userAnswer = answerInput.value.trim().toLowerCase();
   const currentQuestion = questions[currentQuestionIndex];
-
+  document.getElementById("answer-container").style.display = "block";
   //問題を全て答えた場合
   if (currentQuestionIndex + num === questions.length) {
     showQuestion();
@@ -89,9 +112,11 @@ function checkAnswer() {
   //正誤判定
   if (userAnswer === currentQuestion.answer.toLowerCase()) {
     score++;
+    correct += "0";
     showAnswerCorrect();
   } else {
     showAnswerWrong();
+    correct += "1";
   }
 
   currentQuestionIndex++;
@@ -170,10 +195,6 @@ function startTimer() {
     returnBomb();
   }
   timer = setInterval(function () {
-    document.getElementById(
-      "result"
-    ).textContent = `残り時間: ${timeRemaining}秒`;
-
     if (timeRemaining <= 0) {
       clearInterval(timer); // タイマーをクリアして停止
       timeRemaining = timeLimit;
@@ -196,5 +217,26 @@ function returnBomb() {
   bomb.id = "bomb";
 }
 
-// 最初の問題を表示
-showQuestion();
+function loadImage(src, callback) {
+  var img = new Image();
+  img.onload = function () {
+    callback(img);
+  };
+  img.src = src;
+}
+
+function backGroundChange(src) {
+  var imageElement = document.getElementById("bg");
+
+  loadImage(src, function (img) {
+    imageElement.src = src;
+  });
+}
+
+const animateBackground = () => {
+  backgroundScale += scaleSpeed;
+  imageElement.style.transform = `scale(${backgroundScale})`;
+
+  //animateBackground関数の処理をループさせる
+  animationID = requestAnimationFrame(animateBackground);
+};

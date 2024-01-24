@@ -16,7 +16,7 @@
         <a href="#"><img src="img/logo.png" alt="" /></a>
       </div>
 
-      <img src="img/plain.jpg" alt="平原のドット絵" />
+      <img id="bg" src="img/plain.jpg" alt="平原のドット絵" />
 
       <div id="time">
         <a
@@ -28,14 +28,13 @@
 
       <div id="question-container">
         <h1 id="q-num">Q</h1>
-        <h1 id="question">問題文表示</h1>
+        <h1 id="question"></h1>
         <input type="text" id="answer-input" placeholder="" />
       </div>
 
       <div id="answer-container"></div>
-
-      <div id="result"></div>
     </div>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         showQuestion();
