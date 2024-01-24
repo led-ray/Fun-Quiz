@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"
+      rel="stylesheet"
+    />
+    <title>ふぁん×くいず</title>
+  </head>
+  <body>
+    <div id="image-container">
+      <div id="logo">
+        <a href="#"><img src="img/logo.png" alt="" /></a>
+      </div>
+
+      <img src="img/plain.jpg" alt="平原のドット絵" />
+
+      <div id="time">
+        <a
+          id="bomb"
+          class="fa-solid fa-bomb fa-beat fa-3x"
+          style="color: black"
+        ></a>
+      </div>
+
+      <div id="question-container">
+        <h1 id="q-num">Q</h1>
+        <h1 id="question">問題文表示</h1>
+        <input type="text" id="answer-input" placeholder="" />
+      </div>
+
+      <div id="answer-container"></div>
+
+      <div id="result"></div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        showQuestion();
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
