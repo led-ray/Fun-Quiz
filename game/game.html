@@ -18,6 +18,12 @@
 
       <img id="bg" src="img/plain.jpg" alt="平原のドット絵" />
 
+      <div id="fuse">
+        <img src="img/fuse.png" alt="導火線" id="fuse-image" />
+      </div>
+
+      <div id="fire"><img src="img/fire.png" alt="火花" id="firework" /></div>
+
       <div id="time">
         <a
           id="bomb"
@@ -25,7 +31,18 @@
           style="color: black"
         ></a>
       </div>
+      <audio id="correctSound" src="SE/correctSE.mp3"></audio>
+      <audio id="incorrectSound" src="SE/incorrectSE.mp3"></audio>
 
+      <audio id="myAudio" loop>
+        <source src="BGM/BGM2.mp3" type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
+      <i
+        id="muteButton"
+        class="fa-solid fa-volume-high fa-3x"
+        onclick="toggleMuteAndIcon()"
+      ></i>
       <div id="question-container">
         <h1 id="q-num">Q</h1>
         <h1 id="question"></h1>

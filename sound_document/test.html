@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>sound test</title>
     <style>
-        body { margin: 0; }
-        canvas { display: block; }
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
     </style>
     <!-- 下記の1行をheadタグに入れてください（FontAwesomeを使うため） -->
-    <script src="https://kit.fontawesome.com/cc33daa139.js" crossorigin="anonymous"></script>
-</head>
-<body>
-
-<!-- ボタンを押したときにJavascriptで音声を鳴らすスニペット（参考まで。不要なら無視してください） -->    
-    <audio id="myAudio">
-        <!-- 音声ファイルのパスは適宜設定ください -->
-        <source src="SE/正解2.mp3" preload="auto">
+    <script
+      src="https://kit.fontawesome.com/cc33daa139.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- ボタンを押したときにJavascriptで音声を鳴らすスニペット（参考まで。不要なら無視してください） -->
+    <audio id="myAudio" loop>
+      <!-- 音声ファイルのパスは適宜設定ください -->
+      <source src="BGM/BGM2.mp3" type="audio/mp3" />
     </audio>
     <button onclick="playAudio()">再生</button>
 
-<!-- BGMを鳴らすスニペット（上記と同じく、不要なら無視してください） -->  
+    <!-- BGMを鳴らすスニペット（上記と同じく、不要なら無視してください） -->
     <audio autoplay loop>
-        <source src="BGM/NES-RPG-A01-2(Title-Loop135).mp3">
+      <source src="BGM/BGM2.mp3" />
     </audio>
 
-<!-- ミュートボタンを埋め込むには、下記を含めてください（ボタンの位置は、お手数ですが調整をお願いします） --> 
+    <!-- ミュートボタンを埋め込むには、下記を含めてください（ボタンの位置は、お手数ですが調整をお願いします） -->
 
     <!-- ミュート機能ボタンの埋め込み、関数割り当て -->
-    <i id="muteButton" class="fa-solid fa-volume-high fa-2xl" onclick="toggleMuteAndIcon()"></i>
+    <i
+      id="muteButton"
+      class="fa-solid fa-volume-high fa-2xl"
+      onclick="toggleMuteAndIcon()"
+    ></i>
 
     <!-- 本サンプルではjsファイルを読み込んでいますが、適宜設定ください（すでに作成されているjsファイルに関数を含めるなど） -->
     <script src="soundtest.js"></script>
 
-<!-- ここまで -->
-
-    </body>
+    <!-- ここまで -->
+  </body>
 </html>

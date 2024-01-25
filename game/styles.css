@@ -28,7 +28,7 @@ body {
   top: -180px;
   left: 10px;
   width: 20%;
-  z-index: 1;
+  z-index: 5;
 }
 
 #question-container {
@@ -150,4 +150,69 @@ body {
   top: 35px;
   right: 150px;
   z-index: 3;
+}
+
+#playButton {
+  position: absolute;
+  display: inline-block;
+  top: 50px;
+  right: 170px;
+  z-index: 3;
+}
+
+#muteButton {
+  position: absolute;
+  display: inline-block;
+  top: 55px;
+  right: 50px;
+  z-index: 3;
+  overflow: hidden;
+}
+
+#fire {
+  position: absolute;
+  display: inline-block;
+  top: 40px;
+  right: 670px;
+  z-index: 3;
+  transform: rotate(180deg);
+}
+
+@keyframes moveFire {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(-500px);
+  }
+}
+
+#firework {
+  width: 100%;
+  z-index: 3;
+  animation: moveFire 11s linear;
+}
+
+#fuse {
+  position: absolute;
+  display: inline-block;
+  top: 45px;
+  right: 180px;
+  width: 500px;
+  height: auto;
+  z-index: 3;
+}
+
+#fuse-image {
+  width: 100%;
+  transform-origin: right;
+  z-index: 3;
+  animation: disappear 11s linear;
+}
+
+@keyframes disappear {
+  to {
+    transform: scaleX(0);
+  }
 }

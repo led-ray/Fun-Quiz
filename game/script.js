@@ -23,9 +23,9 @@ const questions = [
 
 const backGroundImage = [
   "img/plain.jpg",
-  "img/castle.jpg",
-  "img/plain.jpg",
-  "img/castle.jpg",
+  "img/church.jpg",
+  "img/cave.jpg",
+  "img/ocean.jpg",
 ];
 
 const timeLimit = 10;
@@ -36,14 +36,16 @@ let resolveButtonClick = null;
 var correct = ""; //値渡しの正誤判定
 const num = 1;
 
+const correctSound = document.getElementById("correctSound");
+const incorrectSound = document.getElementById("incorrectSound");
 const questionElement = document.getElementById("question");
 const answerInput = document.getElementById("answer-input");
 const resultElement = document.getElementById("answer-container");
 const q_num = document.getElementById("q-num");
-
 const background = document.getElementById("image-container");
 const imageElement = background.querySelector("#bg");
-
+const fuseImage = document.getElementById("fuse-image");
+const fireImage = document.getElementById("firework");
 const scaleSpeed = 0.0009;
 let backgroundScale = 1;
 let animationID;
@@ -55,6 +57,7 @@ function showQuestion() {
   }
 
   startTimer();
+  startAnimation();
   backgroundScale = 1;
   animateBackground();
   const currentQuestion = questions[currentQuestionIndex];
@@ -76,7 +79,8 @@ function showQuestion() {
     aTag.href = `sample2.html?score=${score}&correct=${correct}`;
     aTag.textContent = questionElement.textContent;
     aTag.id = "nextPage";
-
+    fuseImage.style.display = "none";
+    fireImage.style.display = "none";
     questionElement.innerHTML = "";
     questionElement.appendChild(aTag);
     q_num.textContent = "";
@@ -113,9 +117,11 @@ function checkAnswer() {
   if (userAnswer === currentQuestion.answer.toLowerCase()) {
     score++;
     correct += "0";
+    playCorrectSound();
     showAnswerCorrect();
   } else {
     showAnswerWrong();
+    playIncorrectSound();
     correct += "1";
   }
 
@@ -240,3 +246,69 @@ const animateBackground = () => {
   //animateBackground関数の処理をループさせる
   animationID = requestAnimationFrame(animateBackground);
 };
+
+function toggleMuteAndIcon() {
+  var audios = document.getElementsByTagName("audio"); // すべてのaudio要素を取得
+  for (var i = 0; i < audios.length; i++) {
+    audios[i].muted = !audios[i].muted; // 各audio要素のミュート状態を切り替え
+  }
+
+  // アイコンの切り替え
+  var button = document.getElementById("muteButton");
+  if (audios[0].muted) {
+    // 最初のaudio要素の状態に基づいてアイコンを更新
+    button.classList.remove("fa-volume-high");
+    button.classList.add("fa-volume-off");
+  } else {
+    button.classList.remove("fa-volume-off");
+    button.classList.add("fa-volume-high");
+  }
+}
+
+//画面遷移してもミュート状態を引き継げるように、下記をコードに追加してください。
+//遷移前のページからmute状態を送る
+const mediaElement = document.getElementById("myAudio"); // myAudioの部分は、適宜変更してください
+const isMuted = mediaElement.muted; // muteの状態を取得
+
+const nextPageLink = document.getElementById("nextPageLink");
+nextPageLink.href = `test2.html?muted=${isMuted}`; // クエリパラメータにミュート状態を追加
+
+//遷移後のページでmute状態を反映
+const urlParams = new URLSearchParams(window.location.search);
+let muted = urlParams.get("muted") === "true";
+
+//下記は、音声ファイルを再生するボタン（参考）のためのJavascriptです
+function playAudio() {
+  var audio = document.getElementById("myAudio");
+  audio.play();
+}
+const muteButton = document.getElementById("muteButton");
+
+muteButton.addEventListener("click", function () {
+  if (isMuted === true) {
+    isMuted = false;
+    mediaElement.muted = false;
+  } else {
+    isMuted = true;
+    mediaElement.muted = true;
+    playAudio();
+  }
+});
+
+function startAnimation() {
+  fuseImage.style.animation = "none";
+  fireImage.style.animation = "none";
+
+  setTimeout(function () {
+    fuseImage.style.animation = "disappear 11s linear";
+    fireImage.style.animation = "moveFire 11s linear";
+  }, 100);
+}
+
+function playCorrectSound() {
+  correctSound.play();
+}
+
+function playIncorrectSound() {
+  incorrectSound.play();
+}
