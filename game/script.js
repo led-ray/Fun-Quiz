@@ -247,24 +247,6 @@ const animateBackground = () => {
   animationID = requestAnimationFrame(animateBackground);
 };
 
-function toggleMuteAndIcon() {
-  var audios = document.getElementsByTagName("audio"); // すべてのaudio要素を取得
-  for (var i = 0; i < audios.length; i++) {
-    audios[i].muted = !audios[i].muted; // 各audio要素のミュート状態を切り替え
-  }
-
-  // アイコンの切り替え
-  var button = document.getElementById("muteButton");
-  if (audios[0].muted) {
-    // 最初のaudio要素の状態に基づいてアイコンを更新
-    button.classList.remove("fa-volume-high");
-    button.classList.add("fa-volume-off");
-  } else {
-    button.classList.remove("fa-volume-off");
-    button.classList.add("fa-volume-high");
-  }
-}
-
 //画面遷移してもミュート状態を引き継げるように、下記をコードに追加してください。
 //遷移前のページからmute状態を送る
 const mediaElement = document.getElementById("myAudio"); // myAudioの部分は、適宜変更してください
@@ -280,11 +262,21 @@ let muted = urlParams.get("muted") === "true";
 //下記は、音声ファイルを再生するボタン（参考）のためのJavascriptです
 function playAudio() {
   var audio = document.getElementById("myAudio");
+  var correctSound = document.getElementById("correctSound");
+
   audio.play();
 }
 const muteButton = document.getElementById("muteButton");
 
 muteButton.addEventListener("click", function () {
+  if (muteButton.classList.contains("fa-volume-high")) {
+    muteButton.classList.remove("fa-volume-high");
+    muteButton.classList.add("fa-volume-off");
+  } else {
+    muteButton.classList.remove("fa-volume-off");
+    muteButton.classList.add("fa-volume-high");
+  }
+
   if (isMuted === true) {
     isMuted = false;
     mediaElement.muted = false;
