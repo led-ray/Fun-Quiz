@@ -22,6 +22,14 @@
         <img src="img/fuse.png" alt="導火線" id="fuse-image" />
       </div>
 
+      <audio id="playBGM" loop>
+        <source src="BGM/BGM2.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      <div id="audioIcon" class="button">
+        <i class="fa-solid fa-volume-xmark fa-3x"></i>
+      </div>
+
       <div id="fire"><img src="img/fire.png" alt="火花" id="firework" /></div>
 
       <div id="time">
@@ -33,14 +41,7 @@
       </div>
       <audio id="correctSound" src="SE/correctSE.mp3"></audio>
       <audio id="incorrectSound" src="SE/incorrectSE.mp3"></audio>
-
-      <audio id="myAudio" loop>
-        <source src="BGM/BGM2.mp3" type="audio/mp3" />
-        Your browser does not support the audio tag.
-      </audio>
-      <button id="muteButton" class="button">
-        <i class="fa-solid fa-volume-high fa-3x"></i>
-      </button>
+      
       <div id="question-container">
         <h1 id="q-num">Q</h1>
         <h1 id="question"></h1>
