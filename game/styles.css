@@ -160,7 +160,7 @@ body {
   z-index: 3;
 }
 
-#muteButton {
+#audioIcon {
   position: absolute;
   display: inline-block;
   top: 55px;

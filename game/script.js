@@ -24,7 +24,7 @@ const questions = [
 const backGroundImage = [
   "img/plain.jpg",
   "img/church.jpg",
-  "img/cave.jpg",
+  "img/橋.jpg",
   "img/ocean.jpg",
 ];
 
@@ -59,9 +59,9 @@ function showQuestion() {
   startTimer();
   startAnimation();
   backgroundScale = 1;
-  animateBackground();
   const currentQuestion = questions[currentQuestionIndex];
   backGroundChange(backGroundImage[currentQuestionIndex]);
+  animateBackground();
   // 一時的な要素を作成し内容を設定
   const tempElement = document.createElement("div");
   tempElement.textContent = currentQuestion.question;
@@ -240,11 +240,33 @@ function backGroundChange(src) {
 }
 
 const animateBackground = () => {
-  backgroundScale += scaleSpeed;
-  imageElement.style.transform = `scale(${backgroundScale})`;
+  if (currentQuestionIndex === 2) {
+    // 10秒間かけて背景を徐々に左へ移動させるアニメーション
 
-  //animateBackground関数の処理をループさせる
-  animationID = requestAnimationFrame(animateBackground);
+    let backgroundPosition = 0;
+    const positionSpeed = 1;
+
+    const animateLeft = () => {
+      backgroundPosition += positionSpeed;
+      var imageElement = document.getElementById("bg");
+      backgroundPosition = Math.max(backgroundPosition, 0);
+      imageElement.style.position = "relative";
+      imageElement.style.height = "768px";
+      imageElement.style.width = "2000px";
+      imageElement.style.right = "660px";
+      imageElement.style.transform = `translateX(${backgroundPosition}px)`;
+
+      //animateBackground関数の処理をループさせる
+      animationID = requestAnimationFrame(animateLeft);
+    };
+    animateLeft();
+  } else {
+    backgroundScale += scaleSpeed;
+    imageElement.style.transform = `scale(${backgroundScale})`;
+
+    //animateBackground関数の処理をループさせる
+    animationID = requestAnimationFrame(animateBackground);
+  }
 };
 
 //画面遷移してもミュート状態を引き継げるように、下記をコードに追加してください。
@@ -304,3 +326,31 @@ function playCorrectSound() {
 function playIncorrectSound() {
   incorrectSound.play();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  var currentUrl = window.location.href;
+
+  var urlParams = new URLSearchParams(currentUrl);
+
+  var language = urlParams.get("language");
+
+  console.log(language);
+
+  let audioIcon = document.getElementById("audioIcon");
+  let myAudio = document.getElementById("myAudio");
+
+  audioIcon.addEventListener("click", () => {
+    if (myAudio.paused) {
+      // 再生
+      myAudio.play();
+      audioIcon.classList.remove("fa-volume-xmark");
+      audioIcon.classList.add("fa-volume-high");
+    } else {
+      // 停止
+      myAudio.pause();
+      myAudio.currentTime = 0; // 再生位置を初期化
+      audioIcon.classList.remove("fa-volume-high");
+      audioIcon.classList.add("fa-volume-xmark");
+    }
+  });
+});
