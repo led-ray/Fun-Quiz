@@ -1,10 +1,18 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(img/galaxy.jpg) no-repeat;
+  background-position: cover;
+  height: 100vh;
+}
+
 /* container */
 .container {
   width: auto;
   height: auto;
   margin: 0 auto;
-  background: url(img/galaxy.jpg) no-repeat;
-  background-position: cover;
 }
 
 /* header */
@@ -81,8 +89,8 @@
 
 .close {
   text-align: center;
-  background-color: rgb(195,198,209,.2);
-  width: 50px;  
+  background-color: rgb(195, 198, 209, 0.2);
+  width: 50px;
   padding: 3px;
   position: relative;
   left: 910px;
@@ -98,7 +106,7 @@
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }
@@ -106,7 +114,7 @@
 .level {
   font: normal bold 40px sans-serif;
   color: white;
-  background-color: rgb(28,73,102);
+  background-color: rgb(28, 73, 102);
   border-radius: 10px;
   margin: 50px 37% 75px;
   padding: 20px 0;
@@ -115,7 +123,7 @@
 .language {
   font: normal bold 40px sans-serif;
   color: white;
-  background-color: rgb(138,108,19);
+  background-color: rgb(138, 108, 19);
   border-radius: 10px;
   margin: 0 27%;
   padding: 20px 0;
@@ -130,7 +138,7 @@
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }
@@ -189,7 +197,7 @@
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }
@@ -205,7 +213,6 @@
 .page-language-box {
   font: normal bold 20px sans-serif;
   color: white;
-
 }
 
 .decision {
@@ -215,7 +222,3 @@
   margin: 80px 370px;
   padding: 10px 0;
 }
-
-
-
-
