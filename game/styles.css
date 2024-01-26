@@ -160,7 +160,7 @@ body {
   z-index: 3;
 }
 
-#muteButton {
+.button {
   position: absolute;
   display: inline-block;
   top: 55px;
