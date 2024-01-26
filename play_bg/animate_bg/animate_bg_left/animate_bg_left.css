@@ -1,0 +1,17 @@
+.container {
+  width: 1280px;
+  height: 768px;
+  margin: 5% auto;
+  overflow: hidden;
+}
+
+/* 画像を最小限引き延ばし、右端の位置を調節しています */
+.bg-left img {
+  position: relative;
+  right: 620px;
+  width: 1900px;
+  height: 768px;
+}
+
+
+
