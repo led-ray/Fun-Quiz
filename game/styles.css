@@ -28,7 +28,7 @@ body {
   top: -180px;
   left: 10px;
   width: 20%;
-  z-index: 5;
+  z-index: 1;
 }
 
 #question-container {
@@ -165,8 +165,7 @@ body {
   display: inline-block;
   top: 55px;
   right: 50px;
-  z-index: 3;
-  overflow: hidden;
+  z-index: 5;
 }
 
 #fire {
