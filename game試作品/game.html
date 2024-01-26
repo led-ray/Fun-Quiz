@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/d67199fc97.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>ふぁん×くいず</title>
+  </head>
+  <body>
+    <div id="image-container">
+      <div id="logo">
+        <a href="../top_page/top_page.html"
+          ><img src="img/logo.png" alt=""
+        /></a>
+      </div>
+
+      <img id="bg" src="img/plain.jpg" alt="背景" />
+
+      <div id="fuse">
+        <img src="img/fuse.png" alt="導火線" id="fuse-image" />
+      </div>
+
+      <audio id="playBGM" loop>
+        <source src="BGM/BGM2.mp3" type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
+      <div id="audioIcon" class="button">
+        <i class="fa-solid fa-volume-high fa-3x"></i>
+      </div>
+
+      <div id="fire"><img src="img/fire.png" alt="火花" id="firework" /></div>
+
+      <div id="time">
+        <a
+          id="bomb"
+          class="fa-solid fa-bomb fa-beat fa-3x"
+          style="color: black"
+        ></a>
+      </div>
+      <audio id="correctSound" src="SE/correctSE.mp3"></audio>
+      <audio id="incorrectSound" src="SE/incorrectSE.mp3"></audio>
+
+      <div id="question-container">
+        <h1 id="q-num">Q</h1>
+        <h1 id="question"></h1>
+        <input type="text" id="answer-input" placeholder="" />
+      </div>
+
+      <div id="answer-container"></div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        document.getElementById("answer-input").focus();
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        showQuestion();
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
