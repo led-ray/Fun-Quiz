@@ -1,4 +1,4 @@
-const questions = [
+const questions_PHP = [
   {
     question: "文字列の長さをバイト数で取得する関数は？",
     answer: "strlen",
@@ -10,9 +10,19 @@ const questions = [
     explanation: "A. mb_strlen",
   },
   {
-    question: `   $str = "123a5";\n$replace = [    ]("a", "4", $str);\necho $replace;\n\n出力結果 12345`,
+    question: `   $str = "123a5";\n$replace = [          ]("a", "4", $str);\necho $replace;\n\n出力結果 12345`,
     answer: "str_replace",
     explanation: "A. str_replace",
+  },
+  {
+    question: "配列の先頭から要素を一つ取り出す関数は？",
+    answer: "array_shift",
+    explanation: "A. array_shift",
+  },
+  {
+    question: "変数が数値または数字の文字列かどうかを調べる関数は？",
+    answer: "is_numeric",
+    explanation: "A. is_numeric",
   },
   {
     question: ` お疲れ様でした。\n\nこちらが結果発表と解説です!`,
@@ -20,13 +30,60 @@ const questions = [
     explanation: "",
   },
 ];
-
-const backGroundImage = [
-  "img/plain.jpg",
-  "img/church.jpg",
-  "img/bridge.jpg",
-  "img/ocean.jpg",
+const questions_RUBY = [
+  {
+    question: "配列の末尾に要素を追加するメソッドは？",
+    answer: "push",
+    explanation: "A. push",
+  },
+  {
+    question: "配列の先頭に要素を追加するメソッドは？",
+    answer: "unshift",
+    explanation: "A. unshift",
+  },
+  {
+    question: `   p [0, 1, 2].[    ](1)\n\n出力結果 1`,
+    answer: "slice",
+    explanation: "A. slice",
+  },
+  {
+    question: "ハッシュからすべての値を取得するメソッドは？",
+    answer: "values",
+    explanation: "A. values",
+  },
+  {
+    question:
+      "ハッシュからすべてのキーと、そのペアになる値を削除するメソッドは？",
+    answer: "clear",
+    explanation: "A. clear",
+  },
+  {
+    question: ` お疲れ様でした。\n\nこちらが結果発表と解説です!`,
+    answer: "",
+    explanation: "",
+  },
 ];
+const backGroundImage = [
+  "img/plain2.png",
+  "img/bridge2.png",
+  "img/church3.png",
+  "img/cave3.png",
+  "img/demon3.png",
+  "img/sunset.jpg",
+];
+var currentUrl = window.location.href;
+
+var urlParams = new URLSearchParams(currentUrl);
+
+var language = urlParams.get("language");
+
+let questions = [];
+
+if (language === "ruby") {
+  questions = questions_RUBY;
+} else {
+  questions = questions_PHP;
+}
 
 const timeLimit = 10;
 let timer;
@@ -38,12 +95,13 @@ const num = 1;
 
 const correctSound = document.getElementById("correctSound");
 const incorrectSound = document.getElementById("incorrectSound");
+const explosionSound = document.getElementById("explosionSound");
 const questionElement = document.getElementById("question");
 const answerInput = document.getElementById("answer-input");
 const resultElement = document.getElementById("answer-container");
 const q_num = document.getElementById("q-num");
 const background = document.getElementById("image-container");
-const imageElement = background.querySelector("#bg");
+let imageElement = background.querySelector("#bg");
 const fuseImage = document.getElementById("fuse-image");
 const fireImage = document.getElementById("firework");
 const scaleSpeed = 0.0009;
@@ -202,6 +260,7 @@ function startTimer() {
   }
   timer = setInterval(function () {
     if (timeRemaining <= 0) {
+      playExplosionSound();
       clearInterval(timer); // タイマーをクリアして停止
       timeRemaining = timeLimit;
       checkAnswer();
@@ -213,7 +272,7 @@ function startTimer() {
     }
 
     timeRemaining--;
-  }, 1000);
+  }, 1500);
 }
 
 function returnBomb() {
@@ -240,27 +299,31 @@ function backGroundChange(src) {
 }
 
 const animateBackground = () => {
-  if (currentQuestionIndex === 2) {
+  if (currentQuestionIndex === 1) {
     // 10秒間かけて背景を徐々に左へ移動させるアニメーション
 
     let backgroundPosition = 0;
-    const positionSpeed = 1;
-
+    const positionSpeed = 0.6;
     const animateLeft = () => {
       backgroundPosition += positionSpeed;
-      var imageElement = document.getElementById("bg");
+      imageElement = document.getElementById("bg");
       backgroundPosition = Math.max(backgroundPosition, 0);
       imageElement.style.position = "relative";
       imageElement.style.height = "768px";
       imageElement.style.width = "2000px";
       imageElement.style.right = "660px";
       imageElement.style.transform = `translateX(${backgroundPosition}px)`;
-
       //animateBackground関数の処理をループさせる
       animationID = requestAnimationFrame(animateLeft);
     };
     animateLeft();
   } else {
+    imageElement.style.position = "";
+    imageElement.style.width = "100%";
+    imageElement.style.height = "100%";
+    imageElement.style.transformOrigin = "";
+    imageElement.style.right = "";
+
     backgroundScale += scaleSpeed;
     imageElement.style.transform = `scale(${backgroundScale})`;
 
@@ -296,8 +359,8 @@ function startAnimation() {
   fireImage.style.animation = "none";
 
   setTimeout(function () {
-    fuseImage.style.animation = "disappear 11s linear";
-    fireImage.style.animation = "moveFire 11s linear";
+    fuseImage.style.animation = "disappear 17s linear";
+    fireImage.style.animation = "moveFire 17s linear";
   }, 100);
 }
 
@@ -309,17 +372,15 @@ function playIncorrectSound() {
   incorrectSound.play();
 }
 
+function playExplosionSound() {
+  explosionSound.play();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  var currentUrl = window.location.href;
-
-  var urlParams = new URLSearchParams(currentUrl);
-
-  var language = urlParams.get("language");
-
-  console.log(language);
-
   let audioIcon = document.getElementById("audioIcon");
-  let myAudio = document.getElementById("myAudio");
+  let myAudio = document.getElementById("playBGM");
+
+  myAudio.play();
 
   audioIcon.addEventListener("click", () => {
     if (myAudio.paused) {
