@@ -136,7 +136,9 @@ function showQuestion() {
   //　全問解答したあと。(question配列の末尾をaタグで表示中)
   if (currentQuestionIndex === questions.length - 1) {
     const aTag = document.createElement("a");
+
     aTag.href = `../result/result.html?score=${score}&correct=${correct}&language=${language}`;
+
     aTag.textContent = questionElement.textContent;
     aTag.id = "nextPage";
     fuseImage.style.display = "none";
