@@ -41,6 +41,25 @@ body {
   height: auto;
 }
 
+#levelUp {
+  position: absolute;
+  z-index: 2;
+  top: -40px;
+  right: 500px;
+  animation: fadeIn2 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #question-container {
   position: absolute;
   top: 43%; /* 上部中央に配置 */
