@@ -1,0 +1,134 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    font-family: 'Your Font', sans-serif;
+    background-color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    background-image: url('img/score.png'); 
+    background-size: 1280px 768px;
+    width: 1280px;
+    height: 768px;
+}
+
+.card-header {
+    background-color: #ffffff; 
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.card-content {
+    padding: 20px;
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+    top: 100px;
+}
+
+.score {
+    background-color: #c9b45800; 
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-size: 3em;
+    margin: 20px 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.card-footer {
+    background-color: #c9b45800; 
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.btn {
+    background-color: green;
+    border: 3px groove silver;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+}
+
+.btn.retry {
+    background-color: #f4f1de; 
+    color: #333;
+    position: relative;
+    top: 100px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.result {
+    background-image: url('img/result.png'); 
+    background-size: 1280px 768px;
+    width: 1280px;
+    height: 768px;
+}
+
+.result-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+    background: #ffffff91;
+    position: relative;
+    top: 100px;
+    /*box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);*/
+}
+
+  .result-table th, .result-table td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+  .resultz-table th {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+  .title {
+    text-align: center;
+    color: #8a3324;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+  .php-logo {
+    width: 50px;
+    height: auto;
+}
+
+  .check-mark {
+    color: rgb(0, 0, 0);
+}
+
+  .cross-mark {
+    color: rgb(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+}
+
