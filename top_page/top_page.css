@@ -1,10 +1,22 @@
+* {
+  caret-color: transparent;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(img/galaxy.jpg) no-repeat;
+  background-position: cover;
+  height: 100vh;
+}
+
 /* container */
 .container {
   width: auto;
   height: auto;
   margin: 0 auto;
-  background: url(img/galaxy.jpg) no-repeat;
-  background-position: cover;
 }
 
 /* header */
