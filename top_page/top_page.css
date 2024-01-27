@@ -131,8 +131,8 @@ body {
 
 .close {
   text-align: center;
-  background-color: rgb(195,198,209,.2);
-  width: 50px;  
+  background-color: rgb(195, 198, 209, 0.2);
+  width: 50px;
   padding: 3px;
   position: relative;
   left: 910px;
@@ -148,7 +148,7 @@ body {
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }
@@ -205,7 +205,7 @@ body {
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }
@@ -292,7 +292,7 @@ body {
   bottom: 750px;
   width: 1000px;
   height: 580px;
-  background: rgba(0, 0, 0, .95) center top;
+  background: rgba(0, 0, 0, 0.95) center top;
   border: 15px groove silver;
   text-align: center;
 }

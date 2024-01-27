@@ -10,7 +10,7 @@ const questions_PHP = [
     explanation: "A. mb_strlen",
   },
   {
-    question: `   $str = "123a5";\n$replace = [          ]("a", "4", $str);\necho $replace;\n\n出力結果 12345`,
+    question: `   $str = "123a5";\n$replace = [    ]("a", "4", $str);\necho $replace;\n\n出力結果 12345`,
     answer: "str_replace",
     explanation: "A. str_replace",
   },
@@ -64,11 +64,11 @@ const questions_RUBY = [
   },
 ];
 const backGroundImage = [
-  "img/plain2.png",
-  "img/bridge2.png",
-  "img/church3.png",
-  "img/cave3.png",
-  "img/demon3.png",
+  "img/plain.jpg",
+  "img/church.jpg",
+  "img/ocean.jpg",
+  "img/cave.jpg",
+  "img/demon.jpg",
   "img/sunset.jpg",
 ];
 var currentUrl = window.location.href;
@@ -95,7 +95,6 @@ const num = 1;
 
 const correctSound = document.getElementById("correctSound");
 const incorrectSound = document.getElementById("incorrectSound");
-const explosionSound = document.getElementById("explosionSound");
 const questionElement = document.getElementById("question");
 const answerInput = document.getElementById("answer-input");
 const resultElement = document.getElementById("answer-container");
@@ -260,7 +259,6 @@ function startTimer() {
   }
   timer = setInterval(function () {
     if (timeRemaining <= 0) {
-      playExplosionSound();
       clearInterval(timer); // タイマーをクリアして停止
       timeRemaining = timeLimit;
       checkAnswer();
@@ -299,7 +297,7 @@ function backGroundChange(src) {
 }
 
 const animateBackground = () => {
-  if (currentQuestionIndex === 1) {
+  if (currentQuestionIndex === 2) {
     // 10秒間かけて背景を徐々に左へ移動させるアニメーション
 
     let backgroundPosition = 0;
@@ -370,10 +368,6 @@ function playCorrectSound() {
 
 function playIncorrectSound() {
   incorrectSound.play();
-}
-
-function playExplosionSound() {
-  explosionSound.play();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
