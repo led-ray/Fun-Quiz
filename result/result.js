@@ -18,7 +18,7 @@ window.onload = function() {
     // 'correct' の各桁に基づいて正誤を設定
     if (correct) {
       for (let i = 0; i < 5; i++) {
-        const mark = correct[i] === '1' ? '〇' : '×';
+        const mark = correct[i] === '0' ? '〇' : '×';
         document.getElementById(`checkQ${i + 1}`).textContent = mark;
       }
     }
