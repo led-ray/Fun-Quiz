@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'KeiFont';
+  src: url('../font/keifont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -5,7 +12,7 @@ html, body {
   }
 
 body {
-    font-family: 'Your Font', sans-serif;
+    font-family: 'KeiFont', sans-serif;
     background-color: #ffffff; 
     display: flex;
     justify-content: center;
@@ -87,6 +94,7 @@ body {
 }
 
 .btn {
+    font-family: 'KeiFont', sans-serif;
     background-color: green;
     border: 3px groove silver;
     border-radius: 20px;
@@ -131,14 +139,22 @@ body {
 }
 
   .result-table th, .result-table td {
-    text-align: center;
+        text-align: center;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #2c2c2c91;
 }
 
-  .resultz-table th {
-    background-color: #ffffff;
+  .result-table th {
+    white-space: nowrap;
+    background-color: #c0c0c091;
     color: rgb(0, 0, 0);
+}
+
+.result-table td {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
+  white-space: nowrap;
+  background-color: #c0c0c091;
+  color: rgb(0, 0, 0);
 }
 
 .resultz-footer {
