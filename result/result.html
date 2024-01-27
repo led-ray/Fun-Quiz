@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Function Quiz</title>
+<link rel="stylesheet" href="result.css">
+</head>
+<body>
+
+  <div class="card" id="scoreCard">
+    <div class="card-content">
+        <p>今回のあなたの得点は</p>
+        <div class="score" id="score"></div>
+    </div>
+    <footer class="card-footer">
+        <button class="btn retry">もう一度遊ぶ</button>
+        <button class="btn next">詳細/解説を見る</button>
+    </footer>
+  </div>
+
+  <div class="result" id="resultTable" style="display: none;">
+  <table class="result-table">
+    <tr>
+      <th>問題番号</th>
+      <th>正誤</th>
+      <th>問題</th>
+      <th>答え</th>
+      <th>解説</th>
+    </tr>
+    <tr>
+      <td>Q1</td>
+      <td class="check-mark" id="checkQ1"></td>
+      <td>文字列の長さをバイト数で取得する関数は？</td>
+      <td>strlen</td>
+      <td><img src="img/php.png" alt="PHP" class="php-logo"></td>
+    </tr>
+    <tr>
+      <td>Q2</td>
+      <td class="check-mark" id="checkQ2"></td>
+      <td>文字列の長さを文字数で取得する関数は？</td>
+      <td>mb_strlen</td>
+      <td><img src="img/php.png" alt="PHP" class="php-logo"></td>
+    </tr>
+    <tr>
+      <td>Q3</td>
+      <td class="check-mark" id="checkQ3"></td>
+      <td> $str = "123a5";  $replace = [    ]("a", "4", $str);  echo $replace;     出力結果 12345`</td>
+      <td>str_replace</td>
+      <td><img src="img/php.png" alt="PHP" class="php-logo"></td>
+    </tr>
+    <tr>
+      <td>Q4</td>
+      <td class="check-mark" id="checkQ4"></td>
+      <td>配列の先頭から要素を一つ取り出す関数は？</td>
+      <td>array_shift</td>
+      <td><img src="img/php.png" alt="PHP" class="php-logo"></td>
+    </tr>
+    <tr>
+      <td>Q5</td>
+      <td class="check-mark" id="checkQ5"></td>
+      <td>変数が数値または数字の文字列かどうかを調べる関数は？</td>
+      <td>is_numeric</td>
+      <td><img src="img/php.png" alt="PHP" class="php-logo"></td>
+    </tr>
+  </table>
+  
+  </div>
+
+  <script src="result.js"></script>
+</body>
+</html>
