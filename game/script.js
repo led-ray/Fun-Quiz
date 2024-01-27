@@ -93,6 +93,8 @@ let resolveButtonClick = null;
 var correct = ""; //値渡しの正誤判定
 const num = 1;
 
+const fanfareSound = document.getElementById("fanfare");
+fanfareSound.volume = 0.2;
 const correctSound = document.getElementById("correctSound");
 const incorrectSound = document.getElementById("incorrectSound");
 const explosionSound = document.getElementById("explosionSound");
@@ -118,7 +120,7 @@ function showQuestion() {
   startAnimation();
   backgroundScale = 1;
   const currentQuestion = questions[currentQuestionIndex];
-  backGroundChange(backGroundImage[currentQuestionIndex]);
+  backGroundChange(backGroundImage[score]);
   animateBackground();
   // 一時的な要素を作成し内容を設定
   const tempElement = document.createElement("div");
@@ -134,7 +136,7 @@ function showQuestion() {
   //　全問解答したあと。(question配列の末尾をaタグで表示中)
   if (currentQuestionIndex === questions.length - 1) {
     const aTag = document.createElement("a");
-    aTag.href = `sample2.html?score=${score}&correct=${correct}`;
+    aTag.href = `../result/result.html?score=${score}&correct=${correct}&language=${language}`;
     aTag.textContent = questionElement.textContent;
     aTag.id = "nextPage";
     fuseImage.style.display = "none";
@@ -147,6 +149,15 @@ function showQuestion() {
     var BombElement = document.getElementById("bomb");
     BombElement.classList = "none";
     cancelAnimationFrame(animationID);
+    stopBGM();
+    playFanfare();
+    if (score === 5) {
+      const imgElement = document.createElement("img");
+      imgElement.id = "levelUp";
+      imgElement.src = "img/level2.png";
+      const imageContainer = document.getElementById("image-container");
+      imageContainer.appendChild(imgElement);
+    }
   } else {
     questionElement.textContent = currentQuestion.question;
   }
@@ -299,7 +310,7 @@ function backGroundChange(src) {
 }
 
 const animateBackground = () => {
-  if (currentQuestionIndex === 1) {
+  if (score === 1) {
     // 10秒間かけて背景を徐々に左へ移動させるアニメーション
 
     let backgroundPosition = 0;
@@ -353,6 +364,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function stopBGM() {
+  let playBGM = document.getElementById("playBGM");
+  playBGM.pause();
+}
+
+function playFanfare() {
+  fanfareSound.play();
+}
 
 function startAnimation() {
   fuseImage.style.animation = "none";
