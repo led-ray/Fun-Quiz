@@ -76,6 +76,14 @@ body {
     top: 100px;
 }
 
+.message {
+  text-shadow:
+  -2px -2px 0 #ffffffbd,  
+   2px -2px 0 #ffffffbd,
+  -2px  2px 0 #ffffffbd,
+   2px  2px 0 #ffffffbd;
+}
+
 .score {
     background-color: #c9b45800; 
     color: rgb(0, 0, 0);
@@ -84,6 +92,11 @@ body {
     margin: 20px 0;
     padding: 10px 20px;
     border-radius: 5px;
+    text-shadow:
+    -3px -3px 0 #ffffffbd,  
+     3px -3px 0 #ffffffbd,
+    -3px  3px 0 #ffffffbd,
+     3px  3px 0 #ffffffbd;
 }
 
 .card-footer {
@@ -111,10 +124,19 @@ body {
 }
 
 .btn.retry {
-    background-color: #f4f1de; 
-    color: #333;
+    background-color: #00a11b; 
+    color: white;
     position: relative;
-    top: 100px;
+    left: 200px;
+    top: 160px;
+}
+
+.btn.top {
+  background-color: #0361db; 
+  color: white;
+  position: relative;
+  left: 550px;
+  top: 160px;
 }
 
 .btn:hover {
@@ -132,7 +154,6 @@ body {
     border-collapse: collapse;
     width: 80%;
     margin: 0 auto;
-    background: #ffffff91;
     position: relative;
     top: 100px;
     /*box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);*/
@@ -141,29 +162,23 @@ body {
   .result-table th, .result-table td {
         text-align: center;
     padding: 8px;
-    border: 1px solid #2c2c2c91;
+    border: 1px solid #42424291;
 }
 
   .result-table th {
     white-space: nowrap;
-    background-color: #c0c0c091;
+    background-color: #c9c9c991;
     color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    text-shadow:
 }
 
 .result-table td {
   font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
   white-space: nowrap;
-  background-color: #c0c0c091;
+  background-color: #ffffff91;
   color: rgb(0, 0, 0);
-}
-
-.resultz-footer {
-    background-color: #c9b45800; 
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    position: relative;
-    top: 50px;
+  font-size: 1.2em;
 }
 
   .title {
