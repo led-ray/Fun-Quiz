@@ -22,6 +22,9 @@ crossorigin="anonymous"
   <audio id="bgm" autoplay loop>
     <source src="bgm/bgm.mp3" type="audio/mp3">
   </audio>
+  <audio id="commonButtonsSE">
+    <source src="se/決定ボタンを押す_ピポッ.mp3" type="audio/mp3">
+  </audio>
 
   <div class="card" id="scoreCard">
     <div class="card-content">
@@ -45,7 +48,7 @@ crossorigin="anonymous"
       <div class="score" id="score"></div>
     </div>
     <footer class="card-footer">
-        <button class="btn next">詳細/解説を見る</button>
+        <button class="btn next" id="btn_next">詳細/解説を見る</button>
     </footer>
   </div>
 
@@ -132,8 +135,8 @@ crossorigin="anonymous"
   </table>
 </div> 
 <div class="btns">
-  <a href="../game/game.html" class="btn retry">もう一度遊ぶ</a>
-  <a href="../top_page/top_page.html" class="btn top">トップに戻る</a>
+  <a href="../game/game.html" class="btn retry" id="btn_retry">もう一度遊ぶ</a>
+  <a href="../top_page/top_page.html" class="btn top"id="btn_top">トップに戻る</a>
 </div> 
 
 </div>

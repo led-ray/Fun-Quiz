@@ -44,11 +44,25 @@ function toggleMuteAndIcon() {
     }
   }
 
-  // 「解説を見る」ボタンにホバーした際のアニメーション
-easyButton.addEventListener('mouseenter', () => {
-  if (normalButton.classList.contains('normalSelect')) {
-    normalButton.classList.remove('normalSelect');
-  } else if (hardButton.classList.contains('hardSelect')) {
-    hardButton.classList.remove('hardSelect');
-  }
-});
+// 連続してボタンをクリックしてもSEが再生されるようにする関数
+const resetAndPlay = (audioElement) => {
+  audioElement.pause();
+  audioElement.currentTime = 0;
+  audioElement.play();
+};
+
+  //ボタンのSE再生
+  btn_next.addEventListener('click', () => {
+    let commonButtonsSE = document.getElementById('commonButtonsSE');
+    resetAndPlay(commonButtonsSE);
+  });
+
+  //btn_retry.addEventListener('click', () => {
+  //  let commonButtonsSE = document.getElementById('commonButtonsSE');
+  //  resetAndPlay(commonButtonsSE);
+  //});
+
+  //btn_top.addEventListener('click', () => {
+  //  let commonButtonsSE = document.getElementById('commonButtonsSE');
+  //  resetAndPlay(commonButtonsSE);
+  //});
