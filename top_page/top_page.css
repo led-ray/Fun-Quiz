@@ -12,6 +12,50 @@ body {
   height: 100vh;
 }
 
+.bg-chara img{
+  width: 70px;
+  height: 70px;
+}
+
+.chara1,
+.chara2,
+.chara3,
+.chara4,
+.chara5 {
+  position: relative;
+  left: 140px;
+  top: 400px;
+  margin-bottom: 70px;
+}
+
+.chara6,
+.chara7,
+.chara8,
+.chara9,
+.chara10 {
+  position: relative;
+  left: 1700px;
+  bottom: 320px;
+  margin-bottom: 70px;
+}
+
+.chara1,
+.chara3,
+.chara5,
+.chara7,
+.chara9 {
+  transform: rotate(15deg);
+}
+
+.chara2,
+.chara4,
+.chara6,
+.chara8,
+.chara10 {
+  transform: rotate(-15deg);
+}
+
+
 /* container */
 .container {
   width: auto;
