@@ -43,3 +43,12 @@ function toggleMuteAndIcon() {
       button.classList.add("fa-volume-high");
     }
   }
+
+  // 「解説を見る」ボタンにホバーした際のアニメーション
+easyButton.addEventListener('mouseenter', () => {
+  if (normalButton.classList.contains('normalSelect')) {
+    normalButton.classList.remove('normalSelect');
+  } else if (hardButton.classList.contains('hardSelect')) {
+    hardButton.classList.remove('hardSelect');
+  }
+});
