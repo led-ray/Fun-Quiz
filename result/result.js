@@ -43,3 +43,26 @@ function toggleMuteAndIcon() {
       button.classList.add("fa-volume-high");
     }
   }
+
+// 連続してボタンをクリックしてもSEが再生されるようにする関数
+const resetAndPlay = (audioElement) => {
+  audioElement.pause();
+  audioElement.currentTime = 0;
+  audioElement.play();
+};
+
+  //ボタンのSE再生
+  btn_next.addEventListener('click', () => {
+    let commonButtonsSE = document.getElementById('commonButtonsSE');
+    resetAndPlay(commonButtonsSE);
+  });
+
+  //btn_retry.addEventListener('click', () => {
+  //  let commonButtonsSE = document.getElementById('commonButtonsSE');
+  //  resetAndPlay(commonButtonsSE);
+  //});
+
+  //btn_top.addEventListener('click', () => {
+  //  let commonButtonsSE = document.getElementById('commonButtonsSE');
+  //  resetAndPlay(commonButtonsSE);
+  //});

@@ -38,7 +38,7 @@ body {
   .logo1 {
     height: 0px;
     position: absolute;
-    top: -40px;
+    top: -90px;
     left: 70px;
   }
 
@@ -56,7 +56,7 @@ body {
 
 .mute1 {
     position: relative;
-    top: -50px;
+    top: -100px;
     left: 550px;
     font-size: 0.55em;
 }
@@ -73,7 +73,7 @@ body {
     font-size: 2em;
     text-align: center;
     position: relative;
-    top: 100px;
+    top: 150px;
 }
 
 .message {
@@ -106,37 +106,100 @@ body {
     padding: 10px 0;
 }
 
-.btn {
-    font-family: 'KeiFont', sans-serif;
-    background-color: green;
-    border: 3px groove silver;
-    border-radius: 20px;
-    color: white;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    top: 100px;
-    width: 10em;
-    height:3em;
-    font-size: 2em;
+.btn a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+
+.btn.next {
+  font: normal normal 40px/16px 'M PLUS Rounded 1c', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #7fff00, #00ff00, #2db92d);
+  border-radius: 20px;
+  border-style: outset;
+  border-top: 10px solid #7fff00;
+  border-right: 10px solid #2db92d;
+  border-bottom: 10px solid #2db92d;
+  border-left: 10px solid #7fff00;
+  margin: 0 32%;
+  padding: 23px 0px;
+  transition: 0.2s;
+  width: 10em;
+  height:2em;
+  position: relative;
+  top: 150px;
+  }
+
+.btn.next:hover {
+  font: normal normal 40px/16px 'DotGothic16', sans-serif;
+  background: linear-gradient(to bottom right, #2db92d, #00ff00, #7fff00);
+  border-top: 10px solid #00ff00;
+  border-left: 10px solid #00ff00;
 }
 
 .btn.retry {
-    background-color: #00a11b; 
-    color: white;
-    position: relative;
-    left: 200px;
-    top: 160px;
+  font: normal normal 40px/16px 'M PLUS Rounded 1c', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #ff69b4, #ff1493, #c71585);
+  border-radius: 20px;
+  border-style: outset;
+  border-top: 6px solid #ff69b4;
+  border-right: 6px solid #c71585;
+  border-bottom: 6px solid #c71585;
+  border-left: 6px solid #ff69b4;
+  margin: 0 32%;
+  padding: 23px 0px;
+  transition: 0.2s;
+  width: 8em;
+  height:0.8em;
+  position: relative;
+  top: 150px;
+  right: 200px;
+}
+
+.btn.retry:hover {
+  font: normal normal 40px/16px 'DotGothic16', sans-serif;
+  background: linear-gradient(to bottom right, #c71585, #ff1493, #ff69b4);
+  border-top: 6px solid #ff1493;
+  border-left: 6px solid #ff1493;
 }
 
 .btn.top {
-  background-color: #0361db; 
+  font: normal normal 40px/16px 'M PLUS Rounded 1c', sans-serif;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #6969ff, #1493ff, #1515c7);
+  border-radius: 20px;
+  border-style: outset;
+  border-top: 6px solid #6969ff;
+  border-right: 6px solid #1515c7;
+  border-bottom: 6px solid #1515c7;
+  border-left: 6px solid #6969ff;
+  margin: 0 32%;
+  padding: 23px 0px;
+  transition: 0.2s;
+  width: 8em;
+  height:0.8em;
   position: relative;
-  left: 550px;
-  top: 160px;
+  top: 61px;
+  left: 320px;
+}
+
+.btn.top:hover  {
+  font: normal normal 40px/16px 'DotGothic16', sans-serif;
+  background: linear-gradient(to bottom right, #1515c7, #1493ff, #6969ff);
+  border-top: 6px solid #1493ff;
+  border-left: 6px solid #1493ff;
 }
 
 .btn:hover {
